@@ -8,9 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,15 +63,21 @@ public class Fragmento1 extends Fragment {
         }
         Date blueDate2 = cal.getTime();
 
+        cal = Calendar.getInstance();
+        try {
+            cal.setTime(formato.parse("18-12-2015"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date blueDate3 = cal.getTime();
+
 
 
         if (caldroidFragment!=null){
-            caldroidFragment.setBackgroundResourceForDate(R.color.caldroid_sky_blue,blueDate);
-            caldroidFragment.setBackgroundResourceForDate(R.color.caldroid_sky_blue,blueDate2);
 
-
-            caldroidFragment.setTextColorForDate(R.color.caldroid_white,blueDate);
-            caldroidFragment.setTextColorForDate(R.color.caldroid_white,blueDate2);
+            caldroidFragment.setTextColorForDate(R.color.caldroid_light_red,blueDate);
+            caldroidFragment.setTextColorForDate(R.color.caldroid_light_red,blueDate2);
+            caldroidFragment.setTextColorForDate(R.color.caldroid_sky_blue,blueDate3);
 
         }
 
@@ -110,6 +128,34 @@ public class Fragmento1 extends Fragment {
         };
         caldroidFragment.setCaldroidListener(listener);
 
+        String url = "http://192.168.1.9:8080/Toyabolinsus-master/API_Medico/public/Citas";
+
+        JsonArrayRequest req = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Toast.makeText(getActivity(),response.toString(), Toast.LENGTH_LONG).show();
+                        System.out.println("ESTE es El ARRAY "+response.toString());
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                System.out.println("HAY UN ERROR"+error.toString());
+            }
+        });
+
+        // Adding request to request queue
+        Volley.newRequestQueue(getActivity()).add(req);
         return v;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+
     }
 }

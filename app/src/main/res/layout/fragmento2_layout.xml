@@ -8,7 +8,15 @@
        android:layout_height="wrap_content"
        android:id="@+id/textView2"
        android:textSize="25sp"
-       android:text="Fragmento 2"/>
+       android:text="Mis pacientes"
+       android:gravity="center_horizontal"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listaMisPacientes">
+
+    </ListView>
+
 
 
 </LinearLayout>
