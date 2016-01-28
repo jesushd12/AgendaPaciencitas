@@ -86,7 +86,6 @@ public class Fragmento1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragmento1_layout,container,false);
-
         exp_list = (ExpandableListView)v.findViewById(R.id.exp_list);
 
         pacientesCitas = DataProvider.getInfo();
@@ -128,7 +127,7 @@ public class Fragmento1 extends Fragment {
         };
         caldroidFragment.setCaldroidListener(listener);
 
-        String url = "http://192.168.1.9:8080/Toyabolinsus-master/API_Medico/public/Citas";
+        String url = "http://192.168.0.104:8080/API_Citas/public/Citas";
 
         JsonArrayRequest req = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
