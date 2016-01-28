@@ -2,4 +2,21 @@
     <string name="app_name">Agenda Paciencitas</string>
     <string name="action_settings">Cerrar sesion</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_login">Iniciar sesion</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Contraseña </string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Iniciar sesion</string>
+    <string name="error_invalid_email">El username introducido es incorrecto</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_citas">Citas </string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_historia_paciente">HistoriaPaciente</string>
 </resources>

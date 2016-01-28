@@ -38,11 +38,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     private TabLayout tablayout;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            sessionManager.logoutUser();
             return true;
         }
 
@@ -196,4 +201,5 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
 }
