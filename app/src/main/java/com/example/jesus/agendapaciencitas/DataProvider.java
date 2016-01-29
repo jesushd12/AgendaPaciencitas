@@ -1,5 +1,15 @@
 package com.example.jesus.agendapaciencitas;
 
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,9 +31,15 @@ public class DataProvider {
         return detallePaciente;
     }
     public static HashMap<String, List<String>> getInfo(String fecha){
-        HashMap<String,List<String>> detallePaciente = new HashMap<String,List<String>>();
+        final HashMap<String,List<String>> detallePaciente = new HashMap<String,List<String>>();
         List<String> motivos = new ArrayList<String>();
         List<String> motivos2 = new ArrayList<String>();
+
+        // detallePaciente.put(response.getJSONObject(i).getString("paciente"),response.getJSONObject(i).get("motivo"));
+        String datos = "2016-01-26/jesus";
+
+
+
 
         switch(fecha){
             case "20-12-2015":
@@ -44,8 +60,6 @@ public class DataProvider {
 
                 break;
         }
-
-
         return detallePaciente;
     }
 }

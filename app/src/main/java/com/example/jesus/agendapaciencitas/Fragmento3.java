@@ -1,8 +1,10 @@
 package com.example.jesus.agendapaciencitas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ public class Fragmento3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragmento3_layout,container,false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Configuracion");
         miConfiguracion = (ListView)v.findViewById(R.id.listaConfiguracion);
 
         String[] values = new String[] { "Notificaciones",
@@ -34,15 +37,15 @@ public class Fragmento3 extends Fragment {
                                     int position, long id) {
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                int itemPosition = position;
 
                 // ListView Clicked item value
-                String  itemValue    = (String) miConfiguracion.getItemAtPosition(position);
+                String itemValue = (String) miConfiguracion.getItemAtPosition(position);
+                if (position == 1) {
+                    Intent intent = new Intent(getActivity(),ConfiguracionActivity.class);
+                    startActivity(intent);
+                }
 
-                // Show Alert
-                Toast.makeText(getContext(),
-                        "  ListItem : " +itemValue , Toast.LENGTH_LONG)
-                        .show();
 
             }
 
